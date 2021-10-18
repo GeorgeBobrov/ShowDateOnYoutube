@@ -1,0 +1,15 @@
+{
+   "manifest_version": 2,
+   "name": "ShowDateOnYoutube",
+   "description": "Youtube hides the video publication date if it doesn't have enough space on the page. This code allows you to show the video publication date (if it is hidden) under the number of views",
+   "version": "1.0.0",
+   "content_scripts": [ {
+      "js": [ "ShowDateOnYoutube.js" ],
+      "matches": [ "https://www.youtube.com/watch*" ]
+   } ],
+   "permissions": [
+      "*://www.youtube.com/*", "tabs", "storage"
+   ], 
+   "icons": {
+   }
+}
