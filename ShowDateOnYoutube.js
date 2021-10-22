@@ -3,10 +3,13 @@
 // under the number of views. 
 console.log('ShowDateOnYoutube.js');
 
-let info = document.querySelector("#info-text.ytd-video-primary-info-renderer")
-if (!info) 
-    console.log('No container for ShowDateOnYoutube.js');
-else    
-    info.style.maxHeight = "unset"
+setTimeout(() => {
+    var info = document.querySelector("#info-text.ytd-video-primary-info-renderer")
+    if (!info) 
+        console.log('No container for ShowDateOnYoutube.js');
+    else    
+        info.style.maxHeight = "unset"    
+}, 1000);
 
-    // document.querySelector("#info-text.ytd-video-primary-info-renderer").style.maxHeight = "unset"
+// Fix in console in one line
+// document.querySelector("#info-text.ytd-video-primary-info-renderer").style.maxHeight = "unset"
