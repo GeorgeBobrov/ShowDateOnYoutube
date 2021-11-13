@@ -7,9 +7,8 @@ setTimeout(() => {
     var info = document.querySelector("#info-text.ytd-video-primary-info-renderer")
     if (!info) 
         console.log('No container for ShowDateOnYoutube.js');
-    else    
+    else {
         info.style.maxHeight = "unset"    
+        info.style.display = "unset"  
+    }   
 }, 1000);
-
-// Fix in console in one line
-// document.querySelector("#info-text.ytd-video-primary-info-renderer").style.maxHeight = "unset"
