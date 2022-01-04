@@ -3,12 +3,19 @@
 // under the number of views. 
 console.log('ShowDateOnYoutube.js');
 
-setTimeout(() => {
-    var info = document.querySelector("#info-text.ytd-video-primary-info-renderer")
-    if (!info) 
-        console.log('No container for ShowDateOnYoutube.js');
-    else {
-        info.style.maxHeight = "unset"    
-        info.style.display = "unset"  
-    }   
-}, 1000);
+document.addEventListener("yt-navigate-finish", function(event) {
+	// console.log("yt-navigate-finish from ShowDateOnYoutube")
+
+    if (location.pathname == "/watch") 
+        setTimeout(() => {
+            var info = document.querySelector("#info-text.ytd-video-primary-info-renderer")
+            if (!info) 
+                console.log('No container for ShowDateOnYoutube.js');
+            else {
+                info.style.maxHeight = "unset"    
+                info.style.display = "unset"  
+            }   
+        }, 1000);
+})
+
+
