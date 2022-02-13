@@ -9,12 +9,18 @@ document.addEventListener("yt-navigate-finish", function(event) {
     if (location.pathname == "/watch") 
         setTimeout(() => {
             var info = document.querySelector("#info-text.ytd-video-primary-info-renderer")
-            if (!info) 
-                console.log('No container for ShowDateOnYoutube.js');
-            else {
-                info.style.maxHeight = "unset"    
-                info.style.display = "unset"  
-            }   
+            if (info) {
+                info.style.maxHeight = "unset"
+                info.style.display = "unset"
+            }
+
+            let downloadButton = document.querySelector('#top-level-buttons-computed > ytd-download-button-renderer')
+            if (downloadButton) downloadButton.style.display = "none"
+            
+            let buttons = document.querySelectorAll("#top-level-buttons-computed > ytd-button-renderer")
+            let clipButton = [...buttons].filter(el => el.querySelector("#text").textContent == 'Создать клип')[0]
+            if (clipButton) clipButton.style.display = "none"
+
         }, 1000);
 })
 
