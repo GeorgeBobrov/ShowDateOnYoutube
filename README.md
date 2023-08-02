@@ -1,8 +1,7 @@
 # ShowDateOnYoutube
 ShowDateOnYoutube Chrome Extension for YouTube
 
+Youtube hides the publication date of the video if the description of the video is not open. This code allows you to take the date of publication of the video in the tooltip and show it immediately.
 
-Extension created to fix issue: Youtube hides the video publication date if it doesn't have enough space on the page. This code allows you to show the video publication date (if it is hidden) under the number of views
 
-![](./ShowDateOnYoutubeScreenshot.png "Elements altered by ShowDateOnYoutube Extension")
 
