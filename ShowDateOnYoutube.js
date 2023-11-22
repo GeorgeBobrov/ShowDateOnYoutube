@@ -7,22 +7,22 @@ document.addEventListener("yt-navigate-finish", function(event) {
 
     if (location.pathname == "/watch") 
         setTimeout(() => {
-            var dateInfoTooltip = document.querySelector("#description > tp-yt-paper-tooltip #tooltip")
-            if (dateInfoTooltip) {
-                var str = dateInfoTooltip.textContent
-                // str = '1 739 948 просмотров • Прямой эфир состоялся 24 нояб. 2022 г.'
-                var ind = str.indexOf('•')
-                if (ind > -1)
-                    str = str.slice(ind + 1)
-//
-                let matchList = str.match(/\d/);
-                if (matchList)
-                    str = str.slice(matchList.index)
+            var datePublishedStr = document.querySelector("meta[itemprop='datePublished']").content
+// <meta itemprop="datePublished" content="2020-03-23T12:15:00-07:00"> 
 
-                var date = str.replace('\n', '')
+            if (datePublishedStr) {
+                var datePublished = new Date(datePublishedStr)
+
+                var options = {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                };
+
+                var date = datePublished.toLocaleDateString(undefined, options) 
                 if (date.length < 20) {
-                    var dateInfo = document.querySelector("#description-inner #info > span:nth-child(3)")
-                    dateInfo.textContent = ' •  ' + date + '  •  ' + dateInfo.textContent; 
+                    var dateInfo = document.querySelector("#description #info > span:nth-child(3)")
+                    dateInfo.textContent = ' •  ' + date + '  •  ' + dateInfo.textContent + '  •'; 
                 }
             }
             // var dateInfoMeta = document.querySelector("meta[itemprop='datePublished']").content
