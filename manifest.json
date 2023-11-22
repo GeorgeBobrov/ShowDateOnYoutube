@@ -1,8 +1,8 @@
 {
    "manifest_version": 2,
    "name": "ShowDateOnYoutube",
-   "description": "Youtube hides the publication date of the video if the description of the video is not open. This code allows you to take the date of publication of the video in the tooltip and show it immediately.",
-   "version": "2.0.3",
+   "description": "Youtube hides the publication date of the video if the description of the video is not open. This code allows you to take the publication date in HTML metainformation and show it.",
+   "version": "2.1.0",
    "content_scripts": [ {
       "js": [ "ShowDateOnYoutube.js" ],
       "matches": [ "*://www.youtube.com/*" ]

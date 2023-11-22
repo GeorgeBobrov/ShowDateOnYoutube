@@ -1,5 +1,5 @@
 // Youtube hides the publication date of the video if the description of the video is not open. 
-// This code allows you to take the date of publication of the video in the tooltip and show it immediately.
+// This code allows you to take the publication date in HTML metainformation and show it.
 console.log('ShowDateOnYoutube.js');
 
 document.addEventListener("yt-navigate-finish", function(event) {
@@ -7,8 +7,8 @@ document.addEventListener("yt-navigate-finish", function(event) {
 
     if (location.pathname == "/watch") 
         setTimeout(() => {
-            var datePublishedStr = document.querySelector("meta[itemprop='datePublished']").content
 // <meta itemprop="datePublished" content="2020-03-23T12:15:00-07:00"> 
+            var datePublishedStr = document.querySelector("meta[itemprop='datePublished']")?.content
 
             if (datePublishedStr) {
                 var datePublished = new Date(datePublishedStr)
@@ -20,15 +20,10 @@ document.addEventListener("yt-navigate-finish", function(event) {
                 };
 
                 var date = datePublished.toLocaleDateString(undefined, options) 
-                if (date.length < 20) {
-                    var dateInfo = document.querySelector("#description #info > span:nth-child(3)")
+                var dateInfo = document.querySelector("#description #info > span:nth-child(3)")
+                if (dateInfo) 
                     dateInfo.textContent = ' •  ' + date + '  •  ' + dateInfo.textContent + '  •'; 
-                }
             }
-            // var dateInfoMeta = document.querySelector("meta[itemprop='datePublished']").content
-            // var dateInfoLabel = document.querySelector("#description-inner #info > span:nth-child(3)")
-            // dateInfoLabel.textContent = '• ' + dateInfoMeta + ' • ' + dateInfoLabel.textContent;
-
 
         }, 1000);
 })
