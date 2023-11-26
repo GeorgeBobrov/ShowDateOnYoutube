@@ -12,28 +12,25 @@ document.addEventListener("yt-navigate-finish", function(event) {
                 var str = dateInfoTooltip.textContent
                 // str = '\n  65 127 просмотров • Прямой эфир состоялся 30 окт. 2023 г. • #TheGideonGames #AlanWake2Прохождение #AlanWake2\n'
 
-                // str.split('•')
+                var strs = str.split('•')
+                var thereAreTags = strs.length > 2
 
                 // отсечь количество просмотров
-                var ind = str.indexOf('•')
-                if (ind > -1)
-                    str = str.slice(ind + 1)
-
                 // отсечь теги
-                var ind = str.indexOf('•')
-                if (ind > -1)
-                    str = str.slice(0, ind)    
+                var date = strs[1]
+                // удалить перевод строки, если есть
+                date = date.replace('\n', '')
 
                 // найти первую цифру - начало даты
-                let matchList = str.match(/\d/);
+                let matchList = date.match(/\d/);
                 if (matchList)
-                    str = str.slice(matchList.index)
+                    date = date.slice(matchList.index)
 
-                // удалить перевод строки
-                var date = str.replace('\n', '')
                 if (date.length < 20) {
                     var dateInfo = document.querySelector("#description #info > span:nth-child(3)")
-                    dateInfo.textContent = ' •  ' + date + '  •  ' + dateInfo.textContent + '  •'; 
+                    dateInfo.textContent = ' •  ' + date + '  •  ' + dateInfo.textContent; 
+                    if (thereAreTags)
+                        dateInfo.textContent = dateInfo.textContent + '  •'
                 }
             }
 
