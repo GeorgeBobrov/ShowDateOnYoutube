@@ -34,6 +34,10 @@ document.addEventListener("yt-navigate-finish", function(event) {
                 }
             }
 
+            var sponsorButton = document.querySelector("#sponsor-button")
+            if (sponsorButton) 
+                sponsorButton.style.display = "none"            
+
         }, 1000);
 })
 
